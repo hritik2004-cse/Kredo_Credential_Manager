@@ -1,9 +1,13 @@
 import express from "express";
 import { env } from "./config/env.config.js";
+import connectDB from "./config/db.config.js";
+import authRouter from "./routes/auth.routes.js";
+import errorHandler from "./middleware/error.middleware.js";
 
 const app = express();
-
 app.use(express.json());
+
+app.use("/api/auth", authRouter);
 
 app.get("/", (req, res) => {
   res
@@ -11,6 +15,18 @@ app.get("/", (req, res) => {
     .json({ success: true, message: "kredo API is running successfully" });
 });
 
-app.listen(env.port, () => {
-  console.log(`Server is running at port: ${env.port}`);
-});
+// using error handling middleware
+app.use(errorHandler);
+
+const startServer = async () => {
+  try {
+    await connectDB();
+    app.listen(env.port, () => {
+      console.log(`Server is running at port: ${env.port}`);
+    });
+  } catch (error) {
+    console.error(`MongoDb connection error: ${error}`);
+  }
+};
+
+startServer(); // starting server
