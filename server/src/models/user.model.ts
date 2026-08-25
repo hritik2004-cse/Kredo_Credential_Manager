@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import type { IUser } from "../types/user.types.js";
 import bcrypt from "bcrypt";
+import mongoose from "mongoose";
 import { env } from "../config/env.config.js";
+import type { IUser } from "../types/user.types.js";
 
 const userSchema = new mongoose.Schema<IUser>(
   {
@@ -56,6 +56,10 @@ const userSchema = new mongoose.Schema<IUser>(
       type: Date,
       default: null,
     },
+    refreshToken: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true },
 );
@@ -66,4 +70,5 @@ userSchema.pre("save", async function () {
 });
 
 export const User =
-  (mongoose.models.User as mongoose.Model<IUser>) || mongoose.model<IUser>("User", userSchema);
+  (mongoose.models.User as mongoose.Model<IUser>) ||
+  mongoose.model<IUser>("User", userSchema);
