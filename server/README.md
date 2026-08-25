@@ -8,6 +8,11 @@
 
 This is the backend server for the Kredo Credential Manager project. It provides the core API services, authentication, and database interaction required by the application.
 
+## Features
+- **Secure Authentication**: Implemented user login and signup with JSON Web Tokens (JWT).
+- **Session Management**: Securely handles sessions using `httpOnly` cookies for Access and Refresh tokens.
+- **Validation**: Schema-based data validation using Zod to ensure type safety on requests.
+
 ## Tech Stack
 
 The server is built using a modern Node.js stack with TypeScript:
@@ -17,6 +22,7 @@ The server is built using a modern Node.js stack with TypeScript:
 - **Database ORM:** [Mongoose](https://mongoosejs.com/) (MongoDB)
 - **Validation:** [Zod](https://zod.dev/)
 - **Authentication:** JSON Web Tokens (JWT) & bcrypt
+- **Middleware & Utilities:** `cookie-parser` (for parsing cookies), `cors` (Cross-Origin Resource Sharing), `dotenv` (Environment variables)
 
 ## Project Structure
 
@@ -26,6 +32,7 @@ The source code is organized within the `src` directory following a layered arch
 server/
 ├── src/
 │   ├── config/       # Configuration setup & env vars
+│   ├── constants/    # Hardcoded values and constants
 │   ├── controllers/  # Request handlers
 │   ├── dto/          # Data Transfer Objects (Zod schemas)
 │   ├── middleware/   # Express middleware
@@ -53,3 +60,13 @@ The project uses `pnpm` as the package manager.
 ## Environment Variables
 
 The server requires certain environment variables to function correctly. A `.env` file must be present in the root of the `server` directory. *(Note: The `.env` file should never be committed to version control to protect sensitive information).*
+
+### Required Variables:
+- `PORT`: Port on which the server will run (e.g., `8000`)
+- `NODE_ENV`: Environment mode (`development` or `production`)
+- `MONGODB_URI`: Connection string for the MongoDB database
+- `BCRYPT_SALT_ROUNDS`: Number of rounds for password hashing
+- `JWT_ACCESS_TOKEN_SECRET`: Secret key for signing JWT access tokens
+- `JWT_REFRESH_TOKEN_SECRET`: Secret key for signing JWT refresh tokens
+- `JWT_ACCESS_TOKEN_SECRET_EXPIRY`: Expiry time in milliseconds for the access token
+- `JWT_REFRESH_TOKEN_SECRET_EXPIRY`: Expiry time in milliseconds for the refresh token
