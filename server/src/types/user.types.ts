@@ -12,4 +12,9 @@ export interface IUser {
   googleId?: string;
   resetToken?: string | null;
   resetTokenExpiry?: Date | null;
+  refreshToken?: string;
+}
+
+export interface TokenPayload {
+  sub: string;
 }
