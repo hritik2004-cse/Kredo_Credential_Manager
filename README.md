@@ -1,6 +1,14 @@
 # Kredo Credential Manager
 
-A full-stack credential manager application built with Next.js for the frontend and Express.js + MongoDB for the backend.
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+
+Kredo is a full-stack personal credential management platform designed to help users securely organize and manage their important digital information in one place. Users can create an account, authenticate securely, and manage different types of personal data such as social media profiles, important documents, notes, and other credentials.
 
 ## 🚀 Tech Stack
 
@@ -35,7 +43,7 @@ Make sure you have [Node.js](https://nodejs.org/) and [pnpm](https://pnpm.io/) i
 
 ### 1. Clone the repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/hritik2004-cse/Kredo_Credential_Manager
 cd Kredo_Credential_Manager
 ```
 
@@ -49,9 +57,13 @@ pnpm install
 Create a `.env` file in the `server` directory and configure the required environment variables:
 ```env
 PORT=8000
+NODE_ENV=development
 MONGODB_URI=your_mongodb_connection_string
 BCRYPT_SALT_ROUNDS=10
-# Add JWT secrets or other env variables as needed
+JWT_ACCESS_TOKEN_SECRET=your_jwt_access_secret_here
+JWT_REFRESH_TOKEN_SECRET=your_jwt_refresh_secret_here
+JWT_ACCESS_TOKEN_SECRET_EXPIRY=900000
+JWT_REFRESH_TOKEN_SECRET_EXPIRY=604800000
 ```
 
 Start the backend development server:
