@@ -62,8 +62,16 @@ MONGODB_URI=your_mongodb_connection_string
 BCRYPT_SALT_ROUNDS=10
 JWT_ACCESS_TOKEN_SECRET=your_jwt_access_secret_here
 JWT_REFRESH_TOKEN_SECRET=your_jwt_refresh_secret_here
-JWT_ACCESS_TOKEN_SECRET_EXPIRY=900000
-JWT_REFRESH_TOKEN_SECRET_EXPIRY=604800000
+JWT_ACCESS_TOKEN_EXPIRY=900
+JWT_REFRESH_TOKEN_EXPIRY=604800
+CLIENT_URL=http://localhost:3000
+EMAIL_JS_SERVICE_ID=your_emailjs_service_id
+EMAIL_JS_PUBLIC_KEY=your_emailjs_public_key
+EMAIL_JS_PRIVATE_KEY=your_emailjs_private_key
+EMAIL_JS_VERIFY_EMAIL_TEMPLATE=your_emailjs_verify_template
+EMAIL_JS_RESET_PASSWORD_TEMPLATE=your_emailjs_reset_template
+EMAIL_VERIFICATION_TOKEN_EXPIRY=900
+RESET_PASSWORD_TOKEN_EXPIRY=900
 ```
 
 Start the backend development server:
@@ -87,6 +95,6 @@ pnpm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## 🔒 Features
-- **User Authentication:** Secure local authentication using JWT and bcrypt, with support for email verification and OAuth (Google).
+- **User Authentication:** Secure local authentication using JWT and bcrypt, with support for email verification (via EmailJS) and OAuth (Google).
 - **Modern UI:** Built with Next.js and Tailwind CSS for a highly responsive and fast user interface.
 - **Type Safety:** End-to-end type safety with TypeScript and Zod for schema validation.
