@@ -34,6 +34,14 @@ const userSchema = new mongoose.Schema<IUser>(
       type: Boolean,
       default: false,
     },
+    emailVerificationToken: {
+      type: String,
+      default: "",
+    },
+    emailVerificationTokenExpiry: {
+      type: Date,
+      default: null,
+    },
     password: {
       type: String,
       sparse: true,

@@ -9,9 +9,10 @@
 This is the backend server for the Kredo Credential Manager project. It provides the core API services, authentication, and database interaction required by the application.
 
 ## Features
-- **Secure Authentication**: Implemented user login and signup with JSON Web Tokens (JWT).
+- **Secure Authentication**: Implemented user login and signup with JSON Web Tokens (JWT) and email verification.
 - **Session Management**: Securely handles sessions using `httpOnly` cookies for Access and Refresh tokens.
 - **Validation**: Schema-based data validation using Zod to ensure type safety on requests.
+- **CORS Support**: Configured securely to communicate with the Next.js frontend client.
 
 ## Tech Stack
 
@@ -68,5 +69,6 @@ The server requires certain environment variables to function correctly. A `.env
 - `BCRYPT_SALT_ROUNDS`: Number of rounds for password hashing
 - `JWT_ACCESS_TOKEN_SECRET`: Secret key for signing JWT access tokens
 - `JWT_REFRESH_TOKEN_SECRET`: Secret key for signing JWT refresh tokens
-- `JWT_ACCESS_TOKEN_SECRET_EXPIRY`: Expiry time in milliseconds for the access token
-- `JWT_REFRESH_TOKEN_SECRET_EXPIRY`: Expiry time in milliseconds for the refresh token
+- `CLIENT_URL`: The URL of the frontend application (used for CORS and redirects, e.g., `http://localhost:3000`)
+- `JWT_ACCESS_TOKEN_EXPIRY`: Expiry time in seconds for the access token
+- `JWT_REFRESH_TOKEN_EXPIRY`: Expiry time in seconds for the refresh token
