@@ -72,3 +72,10 @@ The server requires certain environment variables to function correctly. A `.env
 - `CLIENT_URL`: The URL of the frontend application (used for CORS and redirects, e.g., `http://localhost:3000`)
 - `JWT_ACCESS_TOKEN_EXPIRY`: Expiry time in seconds for the access token
 - `JWT_REFRESH_TOKEN_EXPIRY`: Expiry time in seconds for the refresh token
+- `EMAIL_JS_SERVICE_ID`: EmailJS Service ID for sending emails
+- `EMAIL_JS_PUBLIC_KEY`: EmailJS Public Key
+- `EMAIL_JS_PRIVATE_KEY`: EmailJS Private Key
+- `EMAIL_JS_VERIFY_EMAIL_TEMPLATE`: EmailJS template ID for email verification
+- `EMAIL_JS_RESET_PASSWORD_TEMPLATE`: EmailJS template ID for password reset
+- `EMAIL_VERIFICATION_TOKEN_EXPIRY`: Expiry time in seconds for email verification token
+- `RESET_PASSWORD_TOKEN_EXPIRY`: Expiry time in seconds for password reset token
