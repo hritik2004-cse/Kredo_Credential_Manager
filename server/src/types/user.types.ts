@@ -7,6 +7,8 @@ export interface IUser {
   userName: string;
   email: string;
   isEmailVerified: boolean;
+  emailVerificationToken?: string | null;
+  emailVerificationTokenExpiry?: Date | null;
   password?: string;
   provider: "local" | "google";
   googleId?: string;

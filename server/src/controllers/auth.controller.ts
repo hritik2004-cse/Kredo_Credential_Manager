@@ -8,9 +8,14 @@ import {
 import {
   loginService,
   signupService,
-  getCurrentUserService,
-  refreshAccessTokenService,
   logoutService,
+  verifyEmailService,
+  resetPasswordService,
+  deleteAccountService,
+  forgetPasswordService,
+  getCurrentUserService,
+  resendVerificationService,
+  refreshAccessTokenService,
 } from "../services/auth.service.js";
 
 // signup controller
@@ -23,6 +28,24 @@ export const signup = async (req: Request, res: Response) => {
       user,
     },
   });
+};
+
+// verify email controller
+export const verifyEmail = async (req: Request, res: Response) => {
+  await verifyEmailService(req.body!);
+
+  return res
+    .status(200)
+    .json({ success: true, message: "Email verified successfully" });
+};
+
+// resend verification controller
+export const resendVerification = async (req: Request, res: Response) => {
+  await resendVerificationService(req.body!);
+
+  return res
+    .status(200)
+    .json({ success: true, message: "Email verification sent successfully" });
 };
 
 // login controller
@@ -60,7 +83,7 @@ export const getCurrentUser = async (req: Request, res: Response) => {
 
 // refresh access token controller
 export const refreshAccessToken = async (req: Request, res: Response) => {
-  const refreshToken = req.cookies.refreshToken;
+  const { refreshToken } = req.cookies;
 
   if (!refreshToken) {
     throw new AppError(401, "Refresh token required");
@@ -82,6 +105,24 @@ export const refreshAccessToken = async (req: Request, res: Response) => {
     .json({ success: true, message: "Access token refreshed successfully" });
 };
 
+// forget password controller
+export const forgetPassword = async (req: Request, res: Response) => {
+  await forgetPasswordService(req.body!);
+
+  return res
+    .status(200)
+    .json({ success: true, message: "forget Password link sent" });
+};
+
+// reset password controller
+export const resetPassword = async (req: Request, res: Response) => {
+  await resetPasswordService(req.body!);
+
+  return res
+    .status(200)
+    .json({ success: true, message: "Password reset successfully" });
+};
+
 // logout controller
 export const logout = async (req: Request, res: Response) => {
   await logoutService(req.userId!);
@@ -93,4 +134,13 @@ export const logout = async (req: Request, res: Response) => {
   return res
     .status(200)
     .json({ success: true, message: "Account logout successfully" });
+};
+
+// delete account controller
+export const deleteAccount = async (req: Request, res: Response) => {
+  await deleteAccountService(req.userId!);
+
+  return res
+    .status(200)
+    .json({ success: true, message: "Account deleted successfully" });
 };

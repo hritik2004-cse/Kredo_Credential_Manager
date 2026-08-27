@@ -4,10 +4,19 @@ import { env } from "./config/env.config.js";
 import connectDB from "./config/db.config.js";
 import authRouter from "./routes/auth.routes.js";
 import errorHandler from "./middleware/error.middleware.js";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+
+// cors
+app.use(
+  cors({
+    origin: env.clientUrl,
+    credentials: true,
+  }),
+);
 
 app.use("/api/auth", authRouter);
 
