@@ -39,7 +39,7 @@ if (!CLIENT_URL) {
   throw new Error("Client URL is not defined");
 }
 
-if (NODE_ENV !== "development" && NODE_ENV !== "production") {
+if (NODE_ENV !== "development" && NODE_ENV !== "production" && NODE_ENV !== "test") {
   throw new Error("NODE_ENV must be either development or production");
 }
 
