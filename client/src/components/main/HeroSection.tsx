@@ -6,7 +6,7 @@ import CredentialVisual from "./CredentialVisual";
 
 const HeroSection = () => {
   return (
-    <section className="flex-1 w-full flex items-center justify-between">
+    <header className="flex-1 w-full flex items-center justify-between">
       <div className="h-full w-full md:w-[50%] flex flex-col items-start justify-center gap-4 md:gap-8 z-10">
         <span className="inline-flex items-center justify-center gap-2 py-1.5 px-4 rounded-full border border-border bg-surface/50 backdrop-blur-sm w-fit shadow-sm shadow-accent/10">
           <HiOutlineSparkles className="text-lg text-accent" />
@@ -56,7 +56,7 @@ One organized space."
       <div className="h-full hidden md:flex md:w-[50%] items-center justify-center">
         <CredentialVisual />
       </div>
-    </section>
+    </header>
   );
 };
 
