@@ -95,6 +95,7 @@ pnpm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## 🔒 Features
-- **User Authentication:** Secure local authentication using JWT and bcrypt, with support for email verification (via EmailJS) and OAuth (Google).
-- **Modern UI:** Built with Next.js and Tailwind CSS for a highly responsive and fast user interface.
-- **Type Safety:** End-to-end type safety with TypeScript and Zod for schema validation.
+- **Interactive Landing Page:** A visually stunning and highly responsive landing page featuring modern animated UI elements (Cursor Grid, Click Spark, Masked Headings) to enhance user engagement.
+- **Complete Authentication Flow:** Secure local authentication using JWT and bcrypt. Includes full support for user signup, login, email verification (via EmailJS), resend verification, forgot password, and reset password functionalities, alongside OAuth (Google) support.
+- **Modern & Responsive UI:** Built with Next.js App Router and Tailwind CSS. Features fully responsive navigation (Desktop & Mobile menus, side drawer) and dynamic UI elements for a fast, seamless user experience.
+- **Type Safety:** End-to-end type safety with TypeScript and Zod for strict API schema validation.
