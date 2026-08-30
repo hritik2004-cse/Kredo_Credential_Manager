@@ -9,6 +9,12 @@ This is the Next.js frontend client for the **Kredo Credential Manager** project
 - **Language:** TypeScript
 - **Fonts:** Custom fonts using `next/font` (Inter and JetBrains Mono)
 - **Icons:** React Icons & Custom SVG/PNG Icons
+- **UI & Animations:** Custom animated components (Click Spark, Cursor Grid, Masked Headings) and fully responsive layouts
+
+## 🔒 Features
+- **Interactive Landing Page:** Features a modern hero section, interactive cursor grid, click spark effects, and masked headings to create a dynamic user experience.
+- **Authentication Pages:** Beautifully designed, intuitive login and signup pages.
+- **Responsive Navigation:** Desktop and mobile navigation menus with side drawers for seamless access across devices.
 
 ## 🛠️ Getting Started
 
@@ -38,9 +44,23 @@ SERVER_URL=http://localhost:8000
 - `SERVER_URL`: The base URL where your Express backend API is running.
 
 ## 📁 Project Structure
-The source code is located in the `src` directory:
-- `app/` - Next.js App Router pages, layouts, and global styles.
-- `public/` - Static assets and icons.
+
+```text
+client/
+├── public/         # Static assets and icons
+├── src/
+│   ├── app/        # Next.js App Router pages, layouts, and global styles
+│   ├── components/ # Reusable UI components & Animated components
+│   │   ├── main/   # Core page components (e.g., HeroSection, Features)
+│   │   ├── ui/     # Base UI elements (e.g., Drawer, Button)
+│   │   └── utility/# Utility components (e.g., Logo, Navigation)
+│   ├── data/       # Static data constants (e.g., navigation links)
+│   └── lib/        # Utility functions and helpers
+├── components.json # shadcn/ui configuration
+├── next.config.ts  # Next.js configuration
+├── package.json    # Project dependencies & scripts
+└── tailwind.config.ts # Tailwind CSS configuration
+```
 
 ## Learn More
 To learn more about Next.js, take a look at the following resources:
