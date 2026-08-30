@@ -9,7 +9,7 @@
 This is the backend server for the Kredo Credential Manager project. It provides the core API services, authentication, and database interaction required by the application.
 
 ## Features
-- **Secure Authentication**: Implemented user login and signup with JSON Web Tokens (JWT) and email verification.
+- **Secure Authentication**: Comprehensive authentication flow including user login, signup, email verification (via EmailJS), resend verification, and forgot/reset password functionalities using JSON Web Tokens (JWT).
 - **Session Management**: Securely handles sessions using `httpOnly` cookies for Access and Refresh tokens.
 - **Validation**: Schema-based data validation using Zod to ensure type safety on requests.
 - **CORS Support**: Configured securely to communicate with the Next.js frontend client.
