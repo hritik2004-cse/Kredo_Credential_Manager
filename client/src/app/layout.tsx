@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import ClickSpark from "../components/ClickSpark";
+import { ToastContainer, Slide } from "react-toastify";
 import { Inter, JetBrains_Mono } from "next/font/google";
 
 const inter = Inter({
@@ -43,6 +44,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           {children}
         </ClickSpark>
+        {/* react toastify toast container */}
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Slide}
+        />
       </body>
     </html>
   );
