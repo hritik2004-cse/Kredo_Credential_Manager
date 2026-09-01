@@ -8,7 +8,7 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-Kredo is a full-stack personal credential management platform designed to help users securely organize and manage their important digital information in one place. Users can create an account, authenticate securely, and manage different types of personal data such as social media profiles, important documents, notes, and other credentials.
+Kredo is a full-stack personal credential management platform designed to help users securely organize and manage their important digital information in one place. Users can create an account, authenticate securely via a complete email-verification flow, and manage different types of personal data such as social media profiles, important documents, notes, and other credentials.
 
 ## 🚀 Tech Stack
 
@@ -16,15 +16,19 @@ Kredo is a full-stack personal credential management platform designed to help u
 - **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
 - **Library:** React 19
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
-- **Language:** TypeScript
+- **Animations:** [Framer Motion](https://motion.dev/) (`motion/react`), GSAP, OGL (WebGL)
+- **HTTP Client:** [Axios](https://axios-http.com/)
+- **Notifications:** [React Toastify](https://fkhadra.github.io/react-toastify/)
 - **Icons:** React Icons
+- **Language:** TypeScript
 - **Package Manager:** pnpm
 
 ### Backend (Server)
 - **Runtime:** Node.js
 - **Framework:** [Express.js 5](https://expressjs.com/)
 - **Database:** MongoDB with [Mongoose](https://mongoosejs.com/)
-- **Authentication:** JWT, bcrypt (supports local and Google auth)
+- **Authentication:** JWT + bcrypt (cookie-based sessions)
+- **Email:** [EmailJS](https://www.emailjs.com/) (verification & password reset)
 - **Validation:** [Zod](https://zod.dev/)
 - **Language:** TypeScript
 - **Package Manager:** pnpm
@@ -33,8 +37,8 @@ Kredo is a full-stack personal credential management platform designed to help u
 
 This project uses a monorepo setup containing two main directories:
 
-- `/client` - Contains the Next.js frontend application.
-- `/server` - Contains the Express.js backend API.
+- `/client` — Next.js 16 frontend application (App Router)
+- `/server` — Express.js 5 backend REST API
 
 ## 🛠️ Getting Started
 
@@ -48,20 +52,19 @@ cd Kredo_Credential_Manager
 ```
 
 ### 2. Backend Setup
-Navigate to the server directory and install dependencies:
 ```bash
 cd server
 pnpm install
 ```
 
-Create a `.env` file in the `server` directory and configure the required environment variables:
+Create a `.env` file in the `server` directory:
 ```env
 PORT=8000
 NODE_ENV=development
 MONGODB_URI=your_mongodb_connection_string
 BCRYPT_SALT_ROUNDS=10
-JWT_ACCESS_TOKEN_SECRET=your_jwt_access_secret_here
-JWT_REFRESH_TOKEN_SECRET=your_jwt_refresh_secret_here
+JWT_ACCESS_TOKEN_SECRET=your_jwt_access_secret
+JWT_REFRESH_TOKEN_SECRET=your_jwt_refresh_secret
 JWT_ACCESS_TOKEN_EXPIRY=900
 JWT_REFRESH_TOKEN_EXPIRY=604800
 CLIENT_URL=http://localhost:3000
@@ -74,28 +77,34 @@ EMAIL_VERIFICATION_TOKEN_EXPIRY=900
 RESET_PASSWORD_TOKEN_EXPIRY=900
 ```
 
-Start the backend development server:
+Start the backend:
 ```bash
-pnpm run dev
+pnpm dev
 ```
-The API will run on `http://localhost:<PORT>` (e.g., `http://localhost:8000`).
+The API runs on `http://localhost:8000` by default.
 
 ### 3. Frontend Setup
-Open a new terminal window, navigate to the client directory, and install dependencies:
 ```bash
 cd client
 pnpm install
 ```
 
-Start the frontend development server:
-```bash
-pnpm run dev
+Create a `.env` file in the `client` directory:
+```env
+NEXT_PUBLIC_SERVER_URL=http://localhost:8000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Start the frontend:
+```bash
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 🔒 Features
-- **Interactive Landing Page:** A visually stunning and highly responsive landing page featuring modern animated UI elements (Cursor Grid, Click Spark, Masked Headings) to enhance user engagement.
-- **Complete Authentication Flow:** Secure local authentication using JWT and bcrypt. Includes full support for user signup, login, email verification (via EmailJS), resend verification, forgot password, and reset password functionalities, alongside OAuth (Google) support.
-- **Modern & Responsive UI:** Built with Next.js App Router and Tailwind CSS. Features fully responsive navigation (Desktop & Mobile menus, side drawer) and dynamic UI elements for a fast, seamless user experience.
-- **Type Safety:** End-to-end type safety with TypeScript and Zod for strict API schema validation.
+
+- **Interactive Landing Page:** A visually stunning, fully responsive landing page featuring a WebGL animated GradientWaves background, Cursor Grid, Click Spark effects, and Masked Headings.
+- **Complete Authentication Flow:** Signup → Email Verification → Login. Includes resend verification, forgot password, and reset password. All secured with JWT access/refresh tokens stored in `httpOnly` cookies.
+- **Email Verification:** After signup, users receive a verification link via EmailJS. The `/verify-email` page handles token validation with distinct UI states: verifying, success, error, and invalid.
+- **Modern & Responsive UI:** Built with Next.js App Router and Tailwind CSS v4. Fully responsive navigation (Desktop & Mobile menus), glassmorphism cards, and spring-based micro-animations via Framer Motion.
+- **Type Safety:** End-to-end TypeScript with Zod schema validation on the server for all API inputs.
